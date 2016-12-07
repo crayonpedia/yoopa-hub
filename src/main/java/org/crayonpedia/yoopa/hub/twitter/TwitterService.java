@@ -175,4 +175,33 @@ public class TwitterService {
         return oembed;
     }
 
+    /**
+     * Get most retweeted+favorited tweet from specified Twitter list.
+     */
+    @GetMapping("popTweetFromList")
+    public Status getPopTweetFromList(@RequestParam("authzId") int authzId,
+                                      @RequestParam("listOwner") String listOwner,
+                                      @RequestParam("listSlug") String listSlug) throws TwitterException {
+        final TwitterAuthz authz = twitterAuthzRepo.findOne(authzId);
+        final TwitterApp app = authz.getTwitterApp();
+        final Configuration config = new ConfigurationBuilder().setOAuthConsumerKey(app.getApiKey())
+                .setOAuthConsumerSecret(app.getApiSecret())
+                .setOAuthAccessToken(authz.getAccessToken())
+                .setOAuthAccessTokenSecret(authz.getAccessTokenSecret())
+                .build();
+        final Twitter twitter = new TwitterFactory(config).getInstance();
+
+        final ResponseList<Status> tweets = twitter.list().getUserListStatuses(listOwner, listSlug, new Paging(1, 100));
+        Status popTweet = null;
+        int popScore = -1;
+        for (Status tweet : tweets) {
+            int score = tweet.getFavoriteCount() + tweet.getRetweetCount();
+            if (score > popScore) {
+                popTweet = tweet;
+                popScore = score;
+            }
+        }
+        return popTweet;
+    }
+
 }

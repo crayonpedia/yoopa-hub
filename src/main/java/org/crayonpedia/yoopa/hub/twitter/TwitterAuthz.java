@@ -21,7 +21,7 @@ public class TwitterAuthz implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Long userId;
-	@ManyToOne(optional = false) @JoinColumn(name = "twitterApp_id")
+	@ManyToOne(optional = false) @JoinColumn(name = "twitterApp_id", nullable = false)
 	private TwitterApp twitterApp;
 	private String screenName;
 	@Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentOffsetDateTime")
