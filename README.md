@@ -96,6 +96,24 @@ Hasilnya:
 }
 ```
 
+Alternatif: Untuk langsung memasukkan `TwitterAuthz` (biasanya disalin dari server dev):
+
+```
+POST {{baseUri}}api/twitterAuthzes
+Content-Type: application/json
+```
+
+```json
+{
+  "twitterApp": "/api/twitterApps/lumen",
+  "userId": 2799195116,
+  "screenName": "LumenRobot",
+  "creationTime": "2016-12-07T11:25:23+07:00",
+  "accessToken": "x",
+  "accessTokenSecret": "x"
+}
+```
+
 ## Get Tweets from List
 
 ```

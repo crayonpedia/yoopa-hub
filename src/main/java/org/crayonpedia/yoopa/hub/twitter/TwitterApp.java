@@ -1,5 +1,7 @@
 package org.crayonpedia.yoopa.hub.twitter;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,8 +22,9 @@ public class TwitterApp {
 	private String name;
 	private String apiKey;
 	private String apiSecret;
-	@OneToMany(mappedBy = "twitterApp")
-	private Set<TwitterAuthz> authzs = new HashSet<>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "twitterApp")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private Set<TwitterAuthz> authzes = new HashSet<>();
 
 	public String getId() {
 		return id;
@@ -39,12 +42,12 @@ public class TwitterApp {
 		this.name = name;
 	}
 
-	public Set<TwitterAuthz> getAuthzs() {
-		return authzs;
+	public Set<TwitterAuthz> getAuthzes() {
+		return authzes;
 	}
 
-	public void setAuthzs(Set<TwitterAuthz> authzs) {
-		this.authzs = authzs;
+	public void setAuthzes(Set<TwitterAuthz> authzes) {
+		this.authzes = authzes;
 	}
 
 	/**
