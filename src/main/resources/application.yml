@@ -1,0 +1,30 @@
+---
+spring:
+  datasource:
+    # Local: jdbc:mysql://localhost/yoopa_fast_prd?user=root&password=
+    url: ${MYSQL_URI}
+    # Local: root
+#    username: ${MYSQL_USER}
+    # Local: (empty)
+#    password: ${MYSQL_PASSWORD}
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: component-path
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+  data:
+    # REST
+    rest:
+      basePath: /api
+security:
+  user:
+    name: admin
+    password: admin
+
+---
+spring:
+  profiles: development
+logging:
+  level:
+    org.crayonpedia: DEBUG
