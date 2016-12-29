@@ -1,5 +1,12 @@
 # Yoopa Hub
 
+## Deployment
+
+Environment:
+
+1. `SPRING_PROFILES_ACTIVE=production`
+2. `SPRING_DATASOURCE_URL`
+
 ## Authentication
 
 Untuk setiap REST API call, authentication dengan schema `Basic` dibutuhkan.

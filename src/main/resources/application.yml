@@ -2,7 +2,7 @@
 spring:
   datasource:
     # Local: jdbc:mysql://localhost/yoopa_fast_prd?user=root&password=
-    url: ${MYSQL_URI}
+#    url: ${MYSQL_URI}
     # Local: root
 #    username: ${MYSQL_USER}
     # Local: (empty)
