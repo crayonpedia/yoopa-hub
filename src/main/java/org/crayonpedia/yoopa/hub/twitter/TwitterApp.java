@@ -10,7 +10,7 @@ import java.util.Set;
  * Twitter Consumer App information, this does not contain any access token.
  * @see TwitterAuthz
  */
-@Entity
+@Entity @Table(name = "twitterapp")
 //@JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, property="@type")
 //@JsonSubTypes(@com.fasterxml.jackson.annotation.JsonSubTypes.Type(name="TwitterApp", value=TwitterApp.class))
 //@JsonInclude(JsonInclude.Include.NON_NULL)

@@ -11,7 +11,7 @@ import java.time.OffsetDateTime;
  * Authorization by a specific Twitter user granted to a specific Twitter Consumer App.
  * This can be stored as embedded data structure in file or database for tenant, person, shop, etc.
  */
-@Entity
+@Entity @Table(name = "twitterauthz")
 //@JsonTypeInfo(use= JsonTypeInfo.Id.NAME, property="@type")
 //@JsonSubTypes(@JsonSubTypes.Type(name="TwitterAuthorization", value=TwitterAuthorization.class))
 //@JsonInclude(JsonInclude.Include.NON_NULL)

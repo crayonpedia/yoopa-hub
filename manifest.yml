@@ -1,10 +1,11 @@
 ---
 applications:
 - name: yoopahub
+  host: yoopahub2
   memory: 512M
   path: target/yoopa-hub-0.0.1-SNAPSHOT.jar
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   env:
     SPRING_PROFILES_ACTIVE: production
-  services:
-  - mysql-yoopa
+#  services:
+#  - mysql-yoopa
